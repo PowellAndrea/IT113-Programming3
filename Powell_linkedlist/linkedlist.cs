@@ -9,7 +9,7 @@
 //   Items are always added to the end of the list.
 //
 //  todo:
-//
+//		The first item in the list is not being deleted
 //   ---------------------------------
 
 using System;
@@ -29,9 +29,9 @@ namespace Powell_linkedlist
 			Head = null;
 		}
 		public LinkedList(Node newNode)
-      {
+		{
 			Head = newNode;
-      }
+		}
 
 		//	Add an (unsorted) item
 		public Node Add(Node Head, Node NewThing)
@@ -39,9 +39,9 @@ namespace Powell_linkedlist
 			// If list is empty, make this the first thing
 			if (Head == null)
 			{
-            return NewThing;
+				return NewThing;
 			}
-			
+
 			Node CurrentNode = Head;
 
 			while (CurrentNode != null)
@@ -50,7 +50,7 @@ namespace Powell_linkedlist
 				if (CurrentNode.Next == null)
 				{
 					CurrentNode.Next = NewThing;
-					return NewThing;
+					return Head;
 				}
 				else
 				{
@@ -61,66 +61,68 @@ namespace Powell_linkedlist
 		}
 
 		//  Contains: Returns a node with a matching item; if no match, return null
-		public Node Contains(Node Head, String strSearch)
-      {
-			if (Head == null || strSearch == null)
-         {
-				return null;
-         }
+		public Node Contains(Node nodeHead, String strTarget)
+		{
+			if (nodeHead == null || strTarget == null) { return null; }
 
-			Node Current = Head;
-			if (Current.Data == strSearch)
-			{
-				return Current;
-         }
+			if (nodeHead.Data == strTarget)
+			{ 
+				return nodeHead;
+			}
 
+			Node Current = nodeHead;
 			while (Current.Next != null)
 			{
-				if (Current.Data == strSearch)
-				{
-					return Current;
-				}
-				else
-				{
-					Current = Current.Next;
-				}
+				Current = Current.Next;
+				if (Current.Data == strTarget) { return Current; }
 			}
 			return null;
-      }
+		}
 
 		//  Removes node containing the item and links the two adjacent nodes together
-		public Boolean Delete(Node Head, String strThing)
-      {
-			if ((Head == null) || (strThing == null))
-         {
-				return false;
-         }
-			else
-         {
-            //do the remove
-            try
-            {
+		public Boolean Delete(Node Head, Node nodeTarget)
+		{
+			if ((Head != null) && (nodeTarget != null))
+			{
+				if (Head == nodeTarget) 
+				{
+					Node newHead = nodeTarget.Next;
+					Head = newHead;
 					return true;
 				}
-				catch 
-				{
-					return false;
-				}
-         }
-      }
+				
+				Node nodeCurrent = Head;
 
+				while (nodeCurrent.Next != null)
+				{
+					if (nodeCurrent.Next == nodeTarget)
+					{
+						//  This will delete the first instance found.  If there were additional matches, they will be ignored.
+						nodeCurrent.Next = nodeTarget.Next;
+						return true;
+					}
+					nodeCurrent = nodeCurrent.Next;
+				}
+			}
+			return false;
+		}
 		// Prints the entire list front to back.Breaking encapsulation here is permitted
-		public bool PrintAllNodes()
-      {
-         try
-         {
-				// Print Things
-				return true;
-         }
-         catch
-         {
-				return false;
-         }
-      }
+		public void PrintAllNodes(Node Head)
+		{
+			if (Head == null)
+			{
+				Console.WriteLine("The list is empty.  There are no things.");
+			}
+			else
+			{
+				Node CurrentNode = Head;
+
+				while (CurrentNode != null)
+				{
+					Console.WriteLine(CurrentNode.Data);
+					CurrentNode = CurrentNode.Next;
+				}
+			}
+		}
 	}
 }

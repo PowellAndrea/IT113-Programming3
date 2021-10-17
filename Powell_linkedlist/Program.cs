@@ -3,10 +3,8 @@
 //  IT-113  *   HW3: Linked List
 //
 //  todo:
-//		Work in Progress
-//		Print not done
-//		Search broken
-//  ---------------------
+//    10/16/2021 - First item is not being deleted
+
 
 using System;
 
@@ -42,29 +40,38 @@ namespace Powell_linkedlist
                      Console.Clear();
                      try
                      {
-                        Node newNode = new Node(strItem);
-                        //myList.Add(Head, newNode);
-                        myList.Add(Head, new Node("Sailing"));
-                        myList.Add(Head, new Node(strItem));
-                        Console.WriteLine("Success!  The new thing is: " + newNode.Data + "\n");
-                        Console.WriteLine(Menu());
+                        Head = myList.Add(Head, new Node(strItem));
+                        Console.WriteLine("Success!  " + strItem + " is a new thing!\n");
                      }
                      catch
-                     {
-                        Console.WriteLine("Something went wrong.  Try again");
-                     }
+                     { 
+                        Console.WriteLine("Something went wrong.  Try again"); 
+                     }                     
                      break;
 
                   case 2:     // Remove a Thing
                      Console.WriteLine("What thing would you like to remove?");
                      strItem = Console.ReadLine();
+                     Console.Clear();
+
+                     
+                     Node nodeTarget = myList.Contains(Head, strItem);
+
+                     if (myList.Delete(Head, nodeTarget))
+                     {
+                        Console.WriteLine(strItem + " was deleted.");
+                        break;
+                     }
+
+                     Console.WriteLine("Unable to delete " + strItem + ".  Item not found.");
                      break;
 
                   case 3:     // Search for a thing
                      Console.WriteLine("What thing would you like to find?");
                      strItem = Console.ReadLine();
+                     Console.Clear();
 
-                     Node test = myList.Contains(Head, "strItem");
+                     Node test = myList.Contains(Head, strItem);
 
                      if (test != null)
                      {
@@ -72,36 +79,14 @@ namespace Powell_linkedlist
                      }
                      else
                      {
-                        Console.WriteLine("Sorry, " + strItem + " is not a thing.  Try mountain climbing.");
+                        Console.WriteLine("Sorry, " + strItem + " is not a thing.");
                      }
-                     Console.WriteLine(Menu());
                      break;
 
                   case 4:     // Print all the things
-                     {
-                        Console.WriteLine("All the things are:");
-
-                        if (Head == null)
-                        {
-                           Console.WriteLine("The list is empty.");
-                        }
-                        Node CurrentNode = Head;
-
-                        while (CurrentNode != null)
-                        {
-                           Console.WriteLine(CurrentNode.Data);
-
-                           if (CurrentNode.Next != null)
-                           {
-                              CurrentNode = CurrentNode.Next;
-                           }
-
-                           break;
-                        }
-                        Console.WriteLine(Menu());
-                        break;
-                     }
-
+                     myList.PrintAllNodes(Head);
+                     break;
+                     
                   case 5:     // Exit - ok
                      keepLooping = false;
                      Console.WriteLine("Goodby.  Your things are no more.");
@@ -111,8 +96,8 @@ namespace Powell_linkedlist
             catch             // input is not an int 1-5, throw an error - ok
             {
                Console.WriteLine(strChoice + " is not a valid choice.  Try again.\n");
-               Console.WriteLine(Menu());
             }
+            Console.WriteLine(Menu());
          }
       }
 
