@@ -16,108 +16,105 @@ namespace Powell_linkedlist
 	{
 		static void Main(string[] args)
 		{
-			LinkedList myList = new LinkedList();
+			LinkedList myList	= new LinkedList();
 			Node Head = myList.Head;
-			Boolean keepLooping = true;
-
-			// Starting with random test things
-			Head = myList.Add(Head, new Node("Basketball"));
-			Head = myList.Add(Head, new Node("Sailing"));
 
 			Console.WriteLine(Menu());
 
-			while (keepLooping)
-			{
-				String strChoice = Console.ReadLine();
-				Console.Clear();
+         bool keepLooping = true;
+         while (keepLooping)
+         {
+            String strChoice = Console.ReadLine();
+            Console.Clear();
 
-				try
-				{
-					int intChoice = int.Parse(strChoice);
-					//Console.WriteLine("I am not string " + intChoice);
+            try
+            {
+               int intChoice = int.Parse(strChoice);
+               //Console.WriteLine("I am not string " + intChoice);
 
-					String strItem;
+               String strItem;
 
-					switch (intChoice)
-					{
-						case 1:        // Add a Thing
-							Console.WriteLine("What thing would you like to add?");
-							strItem = Console.ReadLine();
-							Console.Clear();
-
-							Node newNode = new Node(strItem);
-							try
+               switch (intChoice)
+               {
+                  case 1:        // Add a Thing
+                     Console.WriteLine("What thing would you like to add?");
+                     strItem = Console.ReadLine();
+                     Console.Clear();
+                     try
                      {
-								myList.Add(Head, newNode);
-								Console.WriteLine("Success!  The new thing is: " + newNode.Data + "\n");
-								Console.WriteLine(Menu());
-							}
-							catch
-                     {
-								Console.WriteLine("Something went wrong.  Try again");
+                        Node newNode = new Node(strItem);
+                        //myList.Add(Head, newNode);
+                        myList.Add(Head, new Node("Sailing"));
+                        myList.Add(Head, new Node(strItem));
+                        Console.WriteLine("Success!  The new thing is: " + newNode.Data + "\n");
+                        Console.WriteLine(Menu());
                      }
-							break;
-
-						case 2:     // Remove a Thing
-							Console.WriteLine("What thing would you like to remove?");
-							strItem = Console.ReadLine();
-							break;
-						
-						case 3:     // Search for a thing
-							Console.WriteLine("What thing would you like to find?");
-							strItem = Console.ReadLine();
-
-							Node test = myList.Contains(Head, "strItem");
-
-							if ( test != null)
+                     catch
                      {
-								Console.WriteLine("We found it! " + strItem + " is your thing.");
+                        Console.WriteLine("Something went wrong.  Try again");
+                     }
+                     break;
+
+                  case 2:     // Remove a Thing
+                     Console.WriteLine("What thing would you like to remove?");
+                     strItem = Console.ReadLine();
+                     break;
+
+                  case 3:     // Search for a thing
+                     Console.WriteLine("What thing would you like to find?");
+                     strItem = Console.ReadLine();
+
+                     Node test = myList.Contains(Head, "strItem");
+
+                     if (test != null)
+                     {
+                        Console.WriteLine("We found it! " + strItem + " is your thing.");
                      }
                      else
                      {
-								Console.WriteLine("Sorry, " + strItem +" is not a thing.  Try mountain climbing.");
-							}
-							Console.WriteLine(Menu());
-							break;
+                        Console.WriteLine("Sorry, " + strItem + " is not a thing.  Try mountain climbing.");
+                     }
+                     Console.WriteLine(Menu());
+                     break;
 
-						case 4:     // Print all the things
+                  case 4:     // Print all the things
                      {
-								Console.WriteLine("All the things are:");
+                        Console.WriteLine("All the things are:");
 
-								if (Head == null)
+                        if (Head == null)
                         {
-									Console.WriteLine("The list is empty.");
+                           Console.WriteLine("The list is empty.");
                         }
-								Node CurrentNode = Head;
+                        Node CurrentNode = Head;
 
-								while (CurrentNode != null)
-								{
-									Console.WriteLine(CurrentNode.Data);
+                        while (CurrentNode != null)
+                        {
+                           Console.WriteLine(CurrentNode.Data);
 
-									if (CurrentNode.Next != null)
-									{
-										CurrentNode = CurrentNode.Next;
-									}
+                           if (CurrentNode.Next != null)
+                           {
+                              CurrentNode = CurrentNode.Next;
+                           }
 
-									break;
-								}
-								Console.WriteLine(Menu());
-								break;
-							}
+                           break;
+                        }
+                        Console.WriteLine(Menu());
+                        break;
+                     }
 
-						case 5:     // Exit - ok
-							keepLooping = false;
-							Console.WriteLine("Goodby.  Your things are no more.");
-							break;
-					}		
-				}
-				catch		// input is not an int 1-5, throw an error - ok
-				{
-					Console.WriteLine(strChoice + " is not a valid choice.  Try again.\n");
-					Console.WriteLine(Menu());
-				}
-			}
-		}
+                  case 5:     // Exit - ok
+                     keepLooping = false;
+                     Console.WriteLine("Goodby.  Your things are no more.");
+                     break;
+               }
+            }
+            catch             // input is not an int 1-5, throw an error - ok
+            {
+               Console.WriteLine(strChoice + " is not a valid choice.  Try again.\n");
+               Console.WriteLine(Menu());
+            }
+         }
+      }
 
 		static String Menu()
 		{

@@ -39,9 +39,9 @@ namespace Powell_linkedlist
 			// If list is empty, make this the first thing
 			if (Head == null)
 			{
-				Head = NewThing;
-				return NewThing;
+            return NewThing;
 			}
+			
 			Node CurrentNode = Head;
 
 			while (CurrentNode != null)
@@ -124,9 +124,3 @@ namespace Powell_linkedlist
       }
 	}
 }
-
-
-
-
-
-

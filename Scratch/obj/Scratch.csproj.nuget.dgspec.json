@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\IT113-AppDev3\\Powell_linkedlist\\Powell_linkedlist.csproj": {}
+    "D:\\Code\\IT113-AppDev3\\Scratch\\Scratch.csproj": {}
   },
   "projects": {
-    "D:\\Code\\IT113-AppDev3\\Powell_linkedlist\\Powell_linkedlist.csproj": {
+    "D:\\Code\\IT113-AppDev3\\Scratch\\Scratch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\IT113-AppDev3\\Powell_linkedlist\\Powell_linkedlist.csproj",
-        "projectName": "Powell_linkedlist",
-        "projectPath": "D:\\Code\\IT113-AppDev3\\Powell_linkedlist\\Powell_linkedlist.csproj",
+        "projectUniqueName": "D:\\Code\\IT113-AppDev3\\Scratch\\Scratch.csproj",
+        "projectName": "Scratch",
+        "projectPath": "D:\\Code\\IT113-AppDev3\\Scratch\\Scratch.csproj",
         "packagesPath": "C:\\Users\\Andrea\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\IT113-AppDev3\\Powell_linkedlist\\obj\\",
+        "outputPath": "D:\\Code\\IT113-AppDev3\\Scratch\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
