@@ -14,8 +14,8 @@ namespace Powell_linkedlist
 	{
 		static void Main(string[] args)
 		{
-			LinkedList myList	= new LinkedList();
-			Node Head = myList.Head;
+         Node Head = new Node();
+         LinkedList myList	= new LinkedList(Head);
 
 			Console.WriteLine(Menu());
 
@@ -53,8 +53,7 @@ namespace Powell_linkedlist
                      Console.WriteLine("What thing would you like to remove?");
                      strItem = Console.ReadLine();
                      Console.Clear();
-
-                     
+ 
                      Node nodeTarget = myList.Contains(Head, strItem);
 
                      if (myList.Delete(Head, nodeTarget))
@@ -75,7 +74,7 @@ namespace Powell_linkedlist
 
                      if (test != null)
                      {
-                        Console.WriteLine("We found it! " + strItem + " is your thing.");
+                        Console.WriteLine("We found it! " + test.Data + " is your thing.");
                      }
                      else
                      {

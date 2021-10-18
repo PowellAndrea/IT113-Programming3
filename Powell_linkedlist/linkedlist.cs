@@ -66,7 +66,7 @@ namespace Powell_linkedlist
 			if (nodeHead == null || strTarget == null) { return null; }
 
 			if (nodeHead.Data == strTarget)
-			{ 
+			{
 				return nodeHead;
 			}
 
@@ -82,30 +82,32 @@ namespace Powell_linkedlist
 		//  Removes node containing the item and links the two adjacent nodes together
 		public Boolean Delete(Node Head, Node nodeTarget)
 		{
-			if ((Head != null) && (nodeTarget != null))
+			if ((Head == null) || (nodeTarget == null))
 			{
-				if (Head == nodeTarget) 
+				return false;
+			}
+
+			if (Head.Data == nodeTarget.Data)
+			{
+				Node temp = Head.Next;
+				return true;
+			}
+
+			Node nodeCurrent = Head;
+
+			while (nodeCurrent != null)
+			{
+				if (nodeCurrent.Next == nodeTarget)
 				{
-					Node newHead = nodeTarget.Next;
-					Head = newHead;
+					//  This will delete the first instance found.  If there were additional matches, they will be ignored.
+					nodeCurrent.Next = nodeTarget.Next;
 					return true;
 				}
-				
-				Node nodeCurrent = Head;
-
-				while (nodeCurrent.Next != null)
-				{
-					if (nodeCurrent.Next == nodeTarget)
-					{
-						//  This will delete the first instance found.  If there were additional matches, they will be ignored.
-						nodeCurrent.Next = nodeTarget.Next;
-						return true;
-					}
-					nodeCurrent = nodeCurrent.Next;
-				}
+				nodeCurrent = nodeCurrent.Next;
 			}
 			return false;
 		}
+
 		// Prints the entire list front to back.Breaking encapsulation here is permitted
 		public void PrintAllNodes(Node Head)
 		{
