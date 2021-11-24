@@ -1,7 +1,7 @@
 ﻿// Andrea Powell
 // IT113
-// NOTES: notes the instructor should read
-// BEHAVIORS NOT IMPLIMENTED AND WHY:
+// NOTES:
+
 
 using System;
 

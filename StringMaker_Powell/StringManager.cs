@@ -3,13 +3,6 @@
 // NOTES: 
 //  I am my own worst enemy, thank you for the reminders to not go with
 //  the first solution or get distracted by the wrong problem.
-//
-//
-// BEHAVIORS NOT IMPLIMENTED AND WHY: 
-//  ToDo:
-//      Reverse:  fix - do not use built in Reverse?
-//       
-
 
 using System;
 using System.Collections;
