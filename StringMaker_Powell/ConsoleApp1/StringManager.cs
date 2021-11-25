@@ -78,7 +78,7 @@ namespace StringMaker_Powell
 
             if ( stack1.Count != stack2.Count ) { return false;}
 
-            while (stack1.Count > 0 ){
+            while (stack1.Count > 0 || stack2.Count > 0){
                 if ( stack1.Pop() != stack2.Pop() ){ return false; }
             }
             return true;
@@ -110,8 +110,8 @@ namespace StringMaker_Powell
 
         public override bool Equals(object obj)
         {
-            if ( (obj.GetType().FullName == "System.String") && (obj.ToString() == this.lastInput) )
-                 { return true;  }
+         if ((obj is string) && (obj.ToString() == this.lastInput))
+         { return true;  }
             else { return false; }
         }
     }
